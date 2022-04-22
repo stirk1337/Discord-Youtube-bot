@@ -7,6 +7,9 @@ import youtube_dl
 from requests import get
 from youtube_search import YoutubeSearch
 
+token = ""
+channel_id = "
+
 bot = commands.Bot(command_prefix="!", intents = discord.Intents.all())
 
 @commands.cooldown(1, 3, commands.BucketType.user)
@@ -26,7 +29,7 @@ async def mycredit(ctx):
 
     emoji = discord.utils.get(bot.emojis, name=random.choice(emojis))
 
-    channel = bot.get_channel("")
+    channel = bot.get_channel(channel_id)
     await channel.send("<@" + str(user) + ">" + ", у Вас " + str(credit) + " Social Credit " + str(emoji))
 
 @bot.command()
@@ -79,7 +82,7 @@ async def play(ctx, *urls):
             url2 = info['formats'][0]['url']
             source = await discord.FFmpegOpusAudio.from_probe(url2, **ffmpeg_options)
             vc.play(source)
-            channel = bot.get_channel("")
+            channel = bot.get_channel(channel_id)
             await channel.send(url)
         else:
             info = ydl.extract_info(url, download = False)
@@ -110,7 +113,7 @@ async def on_raw_reaction_add(payload):
                 f.write(json.dumps(file))
 
 
-            channel = bot.get_channel("")
+            channel = bot.get_channel(channel_id)
             emoji = discord.utils.get(bot.emojis, name='plus15')
 
             await channel.send("<@" + str(message.author.id) + ">" + " получил +15 Social Credit! " + str(emoji))
@@ -126,9 +129,9 @@ async def on_raw_reaction_add(payload):
             with open('info.json', 'w') as f:
                 f.write(json.dumps(file))
 
-            channel = bot.get_channel("")
+            channel = bot.get_channel(channel_id)
 
             emoji = discord.utils.get(bot.emojis, name='minus15')
             await channel.send("<@" + str(message.author.id) + ">" + " получил -15 Social Credit! " + str(emoji))
 
-bot.run("token")
+bot.run(token)
