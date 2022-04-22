@@ -1,4 +1,7 @@
-# Discord-Youtube-bot
-🤖
+# Discord-Youtube-bot🤖
 ## !play
-## 
+## !mycredit
+## !join
+## !disconnect
+## !stop
+
