@@ -5,9 +5,11 @@ You need to install
 * Python3 and requirements list from .py file 
 * Write your token and channel_id for your discord server
 ## Commands
-* !play
+* !play x
 * !mycredit
 * !join
 * !disconnect
-* !stop
+* !skip
+* !list
+* !remove x
 
