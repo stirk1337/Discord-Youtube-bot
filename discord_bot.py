@@ -18,7 +18,7 @@ is_skip = False
 
 token = ""
 channel_id = 0
-emojis = []  # your emoji list, you need to has plus15 and minus15 emojis, for social credit function work!
+emojis = [] # your emoji list, you need to has plus15 and minus15 emojis, for social credit function work!
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 ffmpeg_options = {
@@ -47,6 +47,10 @@ async def mycredit(ctx):
 async def disconnect(ctx):
     await ctx.voice_client.disconnect()
 
+@bot.command()
+async def commands(ctx):
+    channel = bot.get_channel(channel_id)
+    await channel.send("!play x\n!skip\n!list\n!remove x\n!mycredit\n!disconnect")
 
 @bot.command()
 async def play(ctx, *urls):
